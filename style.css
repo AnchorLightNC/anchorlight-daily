@@ -1,1 +1,331 @@
-body{margin:0;font-family:Arial,sans-serif;background:#0b2740;color:#fff}.sky{position:fixed;inset:0;background:linear-gradient(#0a2d49,#1f6a9c);z-index:-3}.ocean{position:fixed;left:0;right:0;bottom:0;height:35%;background:linear-gradient(#2877a8,#0c3859);animation:wave 8s ease-in-out infinite alternate;z-index:-2}.beam{position:fixed;top:-10%;left:50%;width:260px;height:120vh;background:linear-gradient(to bottom,rgba(255,255,210,.3),rgba(255,255,210,0));transform-origin:top center;animation:sweep 10s ease-in-out infinite;filter:blur(8px);z-index:-1}@keyframes wave{from{transform:translateY(0)}to{transform:translateY(10px)}}@keyframes sweep{0%{transform:translateX(-220px) rotate(-25deg)}50%{transform:translateX(0)}100%{transform:translateX(220px) rotate(25deg)}}.card{max-width:900px;margin:40px auto;padding:32px;background:rgba(8,27,42,.88);border-radius:18px;box-shadow:0 15px 40px rgba(0,0,0,.35)}h1,h2,.tagline,#date{text-align:center}blockquote{font-size:1.5rem;font-style:italic;border-left:4px solid #ffd166;padding-left:16px}section{margin:22px 0;padding-top:8px;border-top:1px solid rgba(255,255,255,.15)}button{padding:12px 18px;margin:6px;border:none;border-radius:10px;cursor:pointer}.buttons{text-align:center}
+/* ==========================================
+   AnchorLight Daily v4
+   ========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    color:#ffffff;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    background:
+    linear-gradient(
+    to bottom,
+    #081c2c 0%,
+    #123d63 55%,
+    #1f6fa5 100%);
+
+}
+
+/* =========================
+   Background
+========================= */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-10;
+
+}
+
+/* Stars */
+
+.stars{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+    radial-gradient(white 1px, transparent 1px);
+
+    background-size:70px 70px;
+
+    opacity:.25;
+
+}
+
+/* Lighthouse Beam */
+
+.beam{
+
+    position:absolute;
+
+    top:-15%;
+
+    left:50%;
+
+    width:350px;
+
+    height:130vh;
+
+    transform-origin:top center;
+
+    background:
+    linear-gradient(
+    rgba(255,255,210,.35),
+    rgba(255,255,210,0));
+
+    filter:blur(10px);
+
+    animation:sweep 12s ease-in-out infinite;
+
+}
+
+@keyframes sweep{
+
+0%{
+
+transform:
+translateX(-280px)
+rotate(-30deg);
+
+}
+
+50%{
+
+transform:
+translateX(0)
+rotate(0deg);
+
+}
+
+100%{
+
+transform:
+translateX(280px)
+rotate(30deg);
+
+}
+
+}
+
+/* Ocean */
+
+.ocean{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:32%;
+
+    background:
+    linear-gradient(
+    #287ab4,
+    #0a3657);
+
+    animation:wave 6s ease-in-out infinite alternate;
+
+}
+
+@keyframes wave{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(12px);
+
+}
+
+}
+
+/* =========================
+Header
+========================= */
+
+header{
+
+text-align:center;
+
+padding:50px 20px 30px;
+
+}
+
+header h1{
+
+font-size:3rem;
+
+margin-bottom:10px;
+
+text-shadow:0 0 15px rgba(255,255,255,.35);
+
+}
+
+.tagline{
+
+font-size:1.2rem;
+
+opacity:.9;
+
+font-style:italic;
+
+}
+
+/* =========================
+Card
+========================= */
+
+.card{
+
+max-width:900px;
+
+margin:auto;
+
+margin-bottom:60px;
+
+padding:35px;
+
+background:rgba(5,20,35,.78);
+
+backdrop-filter:blur(12px);
+
+border-radius:18px;
+
+box-shadow:
+
+0 20px 60px rgba(0,0,0,.45);
+
+}
+
+.date{
+
+text-align:center;
+
+margin-bottom:20px;
+
+opacity:.85;
+
+font-size:1rem;
+
+}
+
+h2{
+
+text-align:center;
+
+font-size:2rem;
+
+margin-bottom:20px;
+
+}
+
+/* Quote */
+
+blockquote{
+
+font-size:1.6rem;
+
+line-height:1.7;
+
+font-style:italic;
+
+padding:20px;
+
+margin:30px 0;
+
+border-left:5px solid #ffd166;
+
+background:rgba(255,255,255,.05);
+
+border-radius:10px;
+
+}
+
+/* Sections */
+
+section{
+
+margin-top:35px;
+
+padding-top:25px;
+
+border-top:1px solid rgba(255,255,255,.15);
+
+}
+
+section h3{
+
+margin-bottom:15px;
+
+color:#ffd166;
+
+font-size:1.25rem;
+
+}
+
+section p{
+
+line-height:1.8;
+
+font-size:1.05rem;
+
+}
+
+/* =========================
+Buttons
+========================= */
+
+.buttons{
+
+margin-top:40px;
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:15px;
+
+}
+
+button{
+
+background:#ffd166;
+
+color:#081c2c;
+
+border:none;
+
+padding:14px 22px;
+
+font-size:1rem;
+
+font-weight:bold;
+
+border-radius:10px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:translateY(-3px);
+
+background:#ffe29c
