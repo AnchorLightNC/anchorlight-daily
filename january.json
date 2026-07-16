@@ -1,3 +1,26 @@
 [
-{"title":"A New Beginning","quote":"Hope is not the absence of storms. It is the light that guides you through them.","reflection":"Every sunrise is another invitation to begin again.","challenge":"Encourage one person today.","verse":"Lamentations 3:22-23"}
+  {
+    "day": 1,
+    "title": "A New Beginning",
+    "quote": "Hope doesn't ask the storm to disappear. It reminds you that you were never meant to face it alone.",
+    "reflection": "Every new year, every new month, and every new day is an invitation to begin again. You don't have to erase your past to build a better future. Recovery, healing, and personal growth all begin with one decision—to keep moving forward. Wherever you are today, remember that hope is still within reach.",
+    "challenge": "Take five quiet minutes today to write one goal you're working toward this year and one small step you can take before the day ends.",
+    "verse": "Lamentations 3:22-23"
+  },
+  {
+    "day": 2,
+    "title": "Strength for Today",
+    "quote": "You don't have to carry tomorrow's weight while you're still walking through today.",
+    "reflection": "It's easy to become overwhelmed by everything that lies ahead. Healing becomes more manageable when you focus on today instead of trying to solve your entire future. One healthy decision today is enough. Tomorrow will bring new strength for tomorrow's challenges.",
+    "challenge": "Complete one task you've been putting off, no matter how small. Celebrate the victory when it's done.",
+    "verse": "Matthew 6:34"
+  },
+  {
+    "day": 3,
+    "title": "The Light Still Shines",
+    "quote": "Even when you can't see the shoreline, the lighthouse is still shining.",
+    "reflection": "There will be seasons when hope feels distant. During those moments, trust that your circumstances don't determine your destination. Just because you can't see what's ahead doesn't mean you're lost. Keep following the light one step at a time.",
+    "challenge": "Send an encouraging message to someone who may need hope today.",
+    "verse": "Psalm 46:1"
+  }
 ]
