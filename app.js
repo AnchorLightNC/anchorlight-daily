@@ -132,3 +132,58 @@ https://anchorlightnc.github.io/anchorlight-daily/`;
     }
 
 }
+function getShareText() {
+
+    return `${currentEntry.title}
+
+"${currentEntry.quote}"
+
+${currentEntry.reflection}
+
+📖 ${currentEntry.verse}
+
+⚓ AnchorLight Daily
+https://anchorlightnc.github.io/anchorlight-daily/`;
+
+}
+
+function shareFacebook() {
+
+    const url = encodeURIComponent(
+        "https://anchorlightnc.github.io/anchorlight-daily/"
+    );
+
+    window.open(
+        `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+        "_blank"
+    );
+
+}
+
+function shareX() {
+
+    const text = encodeURIComponent(
+        `${currentEntry.title}
+
+"${currentEntry.quote}"
+
+https://anchorlightnc.github.io/anchorlight-daily/`
+    );
+
+    window.open(
+        `https://twitter.com/intent/tweet?text=${text}`,
+        "_blank"
+    );
+
+}
+
+function shareEmail() {
+
+    const subject = encodeURIComponent(currentEntry.title);
+
+    const body = encodeURIComponent(getShareText());
+
+    window.location =
+        `mailto:?subject=${subject}&body=${body}`;
+
+}
