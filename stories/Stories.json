@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Hope Found Me",
+    "author": "Anonymous",
+    "recovery": "18 Months",
+    "date": "July 2026",
+    "featured": true,
+    "story": "I never thought recovery was possible. One day I reached out for help, and that single decision changed my life. Recovery isn't always easy, but every day is worth fighting for."
+  },
+  {
+    "title": "One Day at a Time",
+    "author": "Sarah",
+    "recovery": "90 Days",
+    "date": "July 2026",
+    "featured": false,
+    "story": "I stopped trying to solve my whole life at once and focused on making it through today. One day became one week, one month, and now I'm finding hope again."
+  }
+]
