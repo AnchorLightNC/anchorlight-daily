@@ -1,0 +1,5 @@
+body{margin:0;font-family:Arial,sans-serif;background:#07111f;color:#fff}
+.hero{padding:80px 20px;text-align:center;background:#10243d}
+.hero h1{color:#FFD166}
+.share-button{display:inline-block;padding:14px 28px;background:#FFD166;color:#07111f;text-decoration:none;border-radius:999px;font-weight:bold}
+.story-card,.featured{background:#18314f;margin:20px;padding:20px;border-radius:14px}
