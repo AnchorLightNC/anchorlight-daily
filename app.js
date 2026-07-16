@@ -1,88 +1,41 @@
-// AnchorLight Daily
-// Loads today's entry from daily.json
+const DATA_URL='daily.json';
 
-const DATA_URL = "daily.json";
+async function loadDaily(){
+ const res=await fetch(DATA_URL);
+ const data=await res.json();
 
-async function loadDailyContent() {
-  try {
-    const response = await fetch(DATA_URL);
+ const now=new Date();
+ const start=new Date(now.getFullYear(),0,0);
+ const day=Math.floor((now-start)/86400000);
 
-    if (!response.ok) {
-      throw new Error("Unable to load daily.json");
-    }
+ const item=data[(day-1)%data.length];
 
-    const data = await response.json();
+ date.textContent=now.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+ title.textContent=item.title||'';
+ quote.textContent='“'+item.quote+'”';
+ reflection.textContent=item.reflection;
+ challenge.textContent=item.challenge;
 
-    const today = new Date();
-    const start = new Date(today.getFullYear(), 0, 0);
-    const dayOfYear = Math.floor(
-      (today - start) / (1000 * 60 * 60 * 24)
-    );
+ if(item.verse){
+   verse.textContent=item.verse;
+   verseBox.style.display='block';
+ }
 
-    const entry = data[(dayOfYear - 1) % data.length];
-
-    document.getElementById("date").textContent =
-      today.toLocaleDateString("en-US", {
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-        year: "numeric"
-      });
-
-    document.getElementById("quote").textContent =
-      "“" + entry.quote + "”";
-
-    document.getElementById("reflection").textContent =
-      entry.reflection;
-
-    document.getElementById("challenge").textContent =
-      entry.challenge;
-
-    window.currentQuote = entry.quote;
-
-  } catch (error) {
-    console.error(error);
-
-    document.getElementById("quote").textContent =
-      "Today's encouragement could not be loaded.";
-
-    document.getElementById("reflection").textContent = "";
-
-    document.getElementById("challenge").textContent = "";
-  }
+ window.currentQuote=item.quote;
 }
 
-function copyQuote() {
-
-  if (!window.currentQuote) return;
-
-  navigator.clipboard.writeText(window.currentQuote);
-
-  alert("Quote copied!");
+function copyQuote(){
+ navigator.clipboard.writeText(window.currentQuote||'');
+ alert('Quote copied!');
 }
 
-function shareQuote() {
-
-  const shareText = window.currentQuote + " — AnchorLight";
-
-  if (navigator.share) {
-
-    navigator.share({
-      title: "AnchorLight Daily",
-      text: shareText,
-      url: window.location.href
-    });
-
-  } else {
-
-    window.open(
-      "https://www.facebook.com/sharer/sharer.php?u=" +
-      encodeURIComponent(window.location.href),
-      "_blank"
-    );
-
-  }
-
+function shareQuote(){
+ const txt=window.currentQuote||'';
+ if(navigator.share){
+   navigator.share({title:'AnchorLight Daily',text:txt,url:location.href});
+ }else{
+   window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href));
+ }
 }
 
-loadDailyContent();
+loadDaily().catch(console.error);
