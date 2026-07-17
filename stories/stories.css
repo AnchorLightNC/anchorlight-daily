@@ -1,5 +1,187 @@
-body{margin:0;font-family:Arial,sans-serif;background:#07111f;color:#fff}
-.hero{padding:80px 20px;text-align:center;background:#10243d}
-.hero h1{color:#FFD166}
-.share-button{display:inline-block;padding:14px 28px;background:#FFD166;color:#07111f;text-decoration:none;border-radius:999px;font-weight:bold}
-.story-card,.featured{background:#18314f;margin:20px;padding:20px;border-radius:14px}
+/* ==========================================
+   AnchorLight - Stories of Hope
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #07111f;
+    color: #ffffff;
+    line-height: 1.7;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(rgba(7,17,31,.75), rgba(7,17,31,.85)),
+                url("../images/lighthouse-banner.png");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero-overlay {
+    max-width: 850px;
+    margin: auto;
+}
+
+.hero h1 {
+    color: #FFD166;
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.hero-subtitle {
+    opacity: .9;
+}
+
+/* BUTTON */
+
+.share-button {
+    display: inline-block;
+    margin-top: 30px;
+    background: #FFD166;
+    color: #07111f;
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.share-button:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+/* GENERAL SECTIONS */
+
+section {
+    padding: 70px 20px;
+}
+
+.intro,
+.closing {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.section-title {
+    text-align: center;
+    color: #FFD166;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+/* FEATURED STORY */
+
+.featured {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: #18314f;
+    border: 2px solid #FFD166;
+    border-radius: 18px;
+    padding: 35px;
+}
+
+/* STORY LIST */
+
+.stories {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.story-card {
+    background: #10243d;
+    padding: 25px;
+    border-left: 5px solid #FFD166;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    transition: .3s;
+}
+
+.story-card:hover {
+    transform: translateY(-5px);
+}
+
+.story-card h2 {
+    color: #FFD166;
+    margin-bottom: 15px;
+}
+
+.story-meta {
+    margin-top: 15px;
+    color: #d0d0d0;
+    font-size: .95rem;
+}
+
+/* ENCOURAGEMENT WALL */
+
+.encouragement {
+    background: #0d1c30;
+}
+
+.quote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.quote-card {
+    background: #18314f;
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid #FFD166;
+    font-style: italic;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(255,255,255,.1);
+    color: #cfcfcf;
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+.hero{
+    padding:70px 20px;
+}
+
+.hero h1{
+    font-size:2.2rem;
+}
+
+.hero p{
+    font-size:1rem;
+}
+
+.share-button{
+    width:100%;
+    max-width:320px;
+}
+
+.story-card,
+.featured{
+    padding:20px;
+}
+
+}
