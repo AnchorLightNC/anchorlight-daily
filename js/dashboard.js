@@ -1,4 +1,4 @@
-// Import Firebase
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import {
   getFirestore,
@@ -47,8 +47,8 @@ async function loadCounter() {
       animateCounter(total);
     }
   } catch (err) {
-    console.error(err);
-    visitorElement.textContent = "--";
+  console.error(err);
+  visitorElement.textContent = err.code + ": " + err.message;
   }
 }
 
