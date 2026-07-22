@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AnchorLight Admin</title>
+
+<title>AnchorLight Admin Dashboard</title>
 
 <link rel="stylesheet" href="css/admin.css">
 
@@ -13,9 +16,89 @@
 
 <body>
 
-<h1>⚓ AnchorLight Admin Dashboard</h1>
+<header class="topbar">
 
-<div id="storyList"></div>
+<div class="logo">
+
+⚓ AnchorLight
+
+</div>
+
+<div class="subtitle">
+
+Admin Dashboard
+
+</div>
+
+</header>
+
+<section class="stats">
+
+<div class="stat-card">
+
+<div class="icon">❤️</div>
+
+<div class="number" id="visitorStat">--</div>
+
+<div class="label">Lives Reached</div>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">📖</div>
+
+<div class="number" id="storyStat">--</div>
+
+<div class="label">Stories Submitted</div>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">⏳</div>
+
+<div class="number" id="pendingStat">--</div>
+
+<div class="label">Pending Review</div>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">✅</div>
+
+<div class="number" id="approvedStat">--</div>
+
+<div class="label">Published</div>
+
+</div>
+
+</section>
+
+<section class="toolbar">
+
+<input
+type="text"
+id="searchBox"
+placeholder="🔍 Search stories...">
+
+<div class="filters">
+
+<button id="allBtn">All</button>
+
+<button id="pendingBtn">Pending</button>
+
+<button id="approvedBtn">Published</button>
+
+</div>
+
+</section>
+
+<section id="storyList">
+
+</section>
 
 </body>
+
 </html>
