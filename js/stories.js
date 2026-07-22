@@ -192,5 +192,5 @@ async function loadFeaturedStory() {
     }
 
 }
-
+loadFeaturedStory();
 loadStories();
