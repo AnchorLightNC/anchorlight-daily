@@ -124,3 +124,67 @@ saveMood.addEventListener("click", () => {
     moodMessage.textContent = messages[mood.value];
 
 });
+// Recovery Goals
+
+const goalInput = document.getElementById("goalInput");
+const addGoal = document.getElementById("addGoal");
+const goalList = document.getElementById("goalList");
+
+let goals = JSON.parse(localStorage.getItem("anchorlightGoals")) || [];
+
+function saveGoals() {
+    localStorage.setItem(
+        "anchorlightGoals",
+        JSON.stringify(goals)
+    );
+}
+
+function renderGoals() {
+
+    goalList.innerHTML = "";
+
+    goals.forEach((goal, index) => {
+
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            <label>
+                <input type="checkbox"
+                       ${goal.completed ? "checked" : ""}>
+                ${goal.text}
+            </label>
+        `;
+
+        const checkbox = li.querySelector("input");
+
+        checkbox.addEventListener("change", () => {
+            goals[index].completed = checkbox.checked;
+            saveGoals();
+        });
+
+        goalList.appendChild(li);
+
+    });
+
+}
+
+addGoal.addEventListener("click", () => {
+
+    const text = goalInput.value.trim();
+
+    if (!text) return;
+
+    goals.push({
+        text,
+        completed: false
+    });
+
+    saveGoals();
+
+    renderGoals();
+
+    goalInput.value = "";
+
+});
+
+renderGoals();
