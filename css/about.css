@@ -1,0 +1,104 @@
+/* ==========================================
+   About Page
+========================================== */
+
+.page-hero{
+
+    padding:120px 20px 70px;
+
+    text-align:center;
+
+    background:linear-gradient(
+        rgba(15,23,42,.88),
+        rgba(17,24,39,.96)
+    );
+
+}
+
+.page-hero h1{
+
+    color:var(--primary);
+
+    font-size:3rem;
+
+    margin-bottom:20px;
+
+}
+
+.page-hero p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    font-size:1.2rem;
+
+}
+
+/* Content */
+
+.story-card{
+
+    max-width:900px;
+
+    margin:40px auto;
+
+    padding:40px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.story-card h2{
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+.story-card p{
+
+    line-height:1.8;
+
+    font-size:1.05rem;
+
+}
+
+.story-card ul{
+
+    padding-left:20px;
+
+}
+
+.story-card li{
+
+    margin-bottom:15px;
+
+    line-height:1.7;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.page-hero h1{
+
+    font-size:2.2rem;
+
+}
+
+.story-card{
+
+    padding:25px;
+
+}
+
+}
