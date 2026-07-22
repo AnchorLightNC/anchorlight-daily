@@ -85,3 +85,42 @@ saveGratitude.addEventListener("click", () => {
     alert("✅ Your gratitude journal has been saved.");
 
 });
+// Mood Tracker
+
+const mood = document.getElementById("mood");
+const saveMood = document.getElementById("saveMood");
+const moodMessage = document.getElementById("moodMessage");
+
+const savedMood = localStorage.getItem("anchorlightMood");
+
+if (savedMood) {
+
+    mood.value = savedMood;
+
+}
+
+saveMood.addEventListener("click", () => {
+
+    if (!mood.value) {
+
+        moodMessage.textContent = "Please select a mood.";
+
+        return;
+
+    }
+
+    localStorage.setItem("anchorlightMood", mood.value);
+
+    const messages = {
+
+        "😁 Great":"Keep shining your light today!",
+        "🙂 Good":"Celebrate the small victories.",
+        "😐 Okay":"One step at a time. You're doing better than you think.",
+        "😔 Struggling":"You don't have to carry this alone. Reach out to someone you trust.",
+        "😢 Having a Hard Day":"Hard days don't last forever. Remember—asking for help is a sign of strength."
+
+    };
+
+    moodMessage.textContent = messages[mood.value];
+
+});
