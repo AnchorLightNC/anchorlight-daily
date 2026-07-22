@@ -1,83 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Share Your Story | AnchorLight</title>
 
+<link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/share.css">
 
-<script type="module" src="js/share.js" defer></script>
 </head>
 
 <body>
 
-<div class="container">
+<header class="navbar">
 
-<h1>⚓ Share Your Story</h1>
+    <div class="logo">
+        <img src="images/logo.png" alt="AnchorLight">
+        <h1>AnchorLight</h1>
+    </div>
 
-<p>
-Your story could be the light someone else needs today.
-Share as much or as little as you'd like.
-</p>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="stories.html">Stories</a></li>
+            <li><a href="daily-beacon.html">Daily Beacon</a></li>
+            <li><a href="resources.html">Resources</a></li>
+        </ul>
+    </nav>
 
-<form id="storyForm">
+</header>
 
-<label>Your Name (Optional)</label>
+<section class="page-hero">
 
-<input
-id="author"
-type="text"
-placeholder="Anonymous">
+    <div class="container">
 
-<label>Story Title</label>
+        <h1>Share Your Story</h1>
 
-<input
-id="title"
-type="text"
-required>
+        <p>
+            Your story could be the hope someone else needs today.
+        </p>
 
-  <label>Category</label>
+    </div>
 
-<select id="category" required>
+</section>
 
-<option value="">Select a Category</option>
+<section class="container">
 
-<option value="Recovery">Recovery</option>
+<form id="storyForm" class="story-form">
 
-<option value="Alcohol">Alcohol</option>
+    <label>Your Name</label>
 
-<option value="Drugs">Drugs</option>
+    <input
+        type="text"
+        id="author"
+        placeholder="Your name (optional)">
 
-<option value="Mental Health">Mental Health</option>
+    <label class="checkbox">
 
-<option value="Depression">Depression</option>
+        <input
+            type="checkbox"
+            id="anonymous">
 
-<option value="Anxiety">Anxiety</option>
+        Post my story anonymously
 
-<option value="Family">Family</option>
+    </label>
 
-<option value="Hope">Hope</option>
+    <label>Story Title</label>
 
-<option value="Faith">Faith</option>
+    <input
+        type="text"
+        id="title"
+        required>
 
-</select>
-<label>Your Story</label>
+    <label>Category</label>
 
-<textarea
-id="message"
-rows="10"
-required></textarea>
+    <select id="category" required>
 
-<button type="submit">
-Submit Story
-</button>
+        <option value="">Select a Category</option>
+
+        <option value="Recovery">Recovery</option>
+
+        <option value="Alcohol">Alcohol</option>
+
+        <option value="Drugs">Drugs</option>
+
+        <option value="Mental Health">Mental Health</option>
+
+        <option value="Depression">Depression</option>
+
+        <option value="Anxiety">Anxiety</option>
+
+        <option value="Family">Family</option>
+
+        <option value="Hope">Hope</option>
+
+        <option value="Faith">Faith</option>
+
+    </select>
+
+    <label>Recovery Length (Optional)</label>
+
+    <input
+        type="text"
+        id="recoveryLength"
+        placeholder="Example: 18 months or 5 years">
+
+    <label>Your Story</label>
+
+    <textarea
+        id="message"
+        rows="12"
+        required
+        placeholder="Share your journey..."></textarea>
+
+    <label class="checkbox">
+
+        <input
+            type="checkbox"
+            id="triggerWarning">
+
+        This story contains potentially triggering content.
+
+    </label>
+
+    <label class="checkbox">
+
+        <input
+            type="checkbox"
+            id="consent"
+            required>
+
+        I understand my story may be reviewed and published by AnchorLight.
+
+    </label>
+
+    <button
+        type="submit"
+        class="primary-btn">
+
+        Submit Story
+
+    </button>
 
 </form>
 
-<p id="status"></p>
+<div id="status"></div>
+
+</section>
+
+<footer>
+
+<div class="copyright">
+
+© 2026 AnchorLight • Find Your Way Back
 
 </div>
 
+</footer>
+
+<script type="module" src="js/share.js"></script>
+
 </body>
+
 </html>
