@@ -1,0 +1,29 @@
+#goalList{
+
+    list-style:none;
+
+    padding:0;
+
+    margin-top:25px;
+
+}
+
+#goalList li{
+
+    background:var(--surface);
+
+    margin-bottom:12px;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+}
+
+#goalList input{
+
+    margin-right:12px;
+
+}
