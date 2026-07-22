@@ -85,23 +85,24 @@ function renderStories(list) {
 
         const preview =
             (story.message || "").substring(0, 220);
+card.innerHTML = `
+    <h2>${story.title || "Story of Hope"}</h2>
 
-        card.innerHTML = `
+    <span class="story-category">
+        ${story.category || "Recovery"}
+    </span>
 
-            <h2>${story.title || "Story of Hope"}</h2>
+    <p class="author">
+        By ${story.author || "Anonymous"}
+    </p>
 
-            <p class="author">
-                By ${story.author || "Anonymous"}
-            </p>
+    <p>${preview}...</p>
 
-            <p>${preview}...</p>
-
-            <a class="primary-btn"
-               href="story.html?id=${story.id}">
-               Read Story
-            </a>
-
-        `;
+    <a class="primary-btn"
+       href="story.html?id=${story.id}">
+       Read Story
+    </a>
+`;
 
         storyGrid.appendChild(card);
 
