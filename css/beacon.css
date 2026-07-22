@@ -1,0 +1,160 @@
+/* ==========================================
+   Daily Beacon
+========================================== */
+
+.page-hero{
+
+    padding:120px 20px 70px;
+
+    text-align:center;
+
+    background:linear-gradient(
+        rgba(15,23,42,.88),
+        rgba(17,24,39,.96)
+    );
+
+}
+
+.page-hero h1{
+
+    font-size:3rem;
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+.page-hero p{
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+/* Today's Beacon */
+
+.beacon-card{
+
+    max-width:900px;
+
+    margin:60px auto;
+
+    padding:50px;
+
+    text-align:center;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    box-shadow:var(--shadow);
+
+}
+
+#beaconDate{
+
+    color:var(--primary);
+
+    font-size:.95rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    margin-bottom:20px;
+
+}
+
+#beaconTitle{
+
+    font-size:2.2rem;
+
+    margin-bottom:25px;
+
+}
+
+#beaconQuote{
+
+    font-size:1.3rem;
+
+    line-height:1.9;
+
+    font-style:italic;
+
+}
+
+/* Tips */
+
+.tips{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:30px;
+
+    margin:60px auto;
+
+}
+
+.story-card{
+
+    text-align:center;
+
+}
+
+.story-card h2{
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+/* Share Button */
+
+#shareButton{
+
+    margin-top:25px;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.page-hero h1{
+
+    font-size:2.2rem;
+
+}
+
+.beacon-card{
+
+    padding:30px;
+
+}
+
+#beaconTitle{
+
+    font-size:1.7rem;
+
+}
+
+#beaconQuote{
+
+    font-size:1.1rem;
+
+}
+
+.tips{
+
+    grid-template-columns:1fr;
+
+}
+
+}
