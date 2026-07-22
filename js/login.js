@@ -3,7 +3,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebas
 import {
   getAuth,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithRedirect,
+  getRedirectResult
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -17,25 +18,22 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
-
 const provider = new GoogleAuthProvider();
 
-document
-.getElementById("googleLogin")
-.onclick = async () => {
+// Handle returning from Google sign-in
+getRedirectResult(auth)
+  .then((result) => {
+    if (result && result.user) {
+      window.location.href = "admin.html";
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+    alert(error.message);
+  });
 
-  try {
-
-    await signInWithPopup(auth, provider);
-
-    window.location.href="admin.html";
-
-  } catch(err){
-
-    alert(err.message);
-
-  }
-
-};
+// Start sign-in
+document.getElementById("googleLogin").addEventListener("click", () => {
+  signInWithRedirect(auth, provider);
+});
