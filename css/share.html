@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Share Your Story | AnchorLight</title>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/share.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+<img src="images/logo.png" alt="AnchorLight">
+<h1>AnchorLight</h1>
+</div>
+
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="stories.html">Stories</a></li>
+<li><a href="resources.html">Resources</a></li>
+</ul>
+</nav>
+
+</header>
+
+<section class="page-hero">
+
+<div class="container">
+
+<h1>Share Your Story</h1>
+
+<p>
+
+Your story could be the hope someone else needs today.
+
+</p>
+
+</div>
+
+</section>
+
+<section class="container">
+
+<form id="storyForm" class="story-form">
+
+<label>Your Name</label>
+
+<input
+type="text"
+id="author"
+placeholder="Anonymous is okay">
+
+<label>Story Title</label>
+
+<input
+type="text"
+id="title"
+required>
+
+<label>Your Story</label>
+
+<textarea
+id="message"
+rows="12"
+required></textarea>
+
+<label class="checkbox">
+
+<input
+type="checkbox"
+id="consent"
+required>
+
+I understand my story may be published after review.
+
+</label>
+
+<button
+type="submit"
+class="primary-btn">
+
+Submit Story
+
+</button>
+
+</form>
+
+<div id="status"></div>
+
+</section>
+
+<script type="module" src="js/share.js"></script>
+
+</body>
+
+</html>
