@@ -127,28 +127,78 @@ searchBox.addEventListener("input", () => {
 });
 async function loadFeaturedStory() {
 
-    const featuredDiv =
-        document.getElementById("featuredStory");
+    const featuredDiv = document.getElementById("featuredStory");
 
     try {
 
-        const q = query(
+        // Look for a manually featured story first
+        let q = query(
             collection(db, "stories"),
             where("approved", "==", true),
             where("featured", "==", true)
         );
 
-        const snapshot = await getDocs(q);
+        let snapshot = await getDocs(q);
 
+        // If none exists, use the newest approved story
         if (snapshot.empty) {
 
-            featuredDiv.innerHTML = `
-                <p>No featured story selected.</p>
-            `;
+            q = query(
+                collection(db, "stories"),
+                where("approved", "==", true),
+                orderBy("createdAt", "desc")
+            );
 
-            return;
+            snapshot = await getDocs(q);
+
+            if (snapshot.empty) {
+
+                featuredDiv.innerHTML = `
+                    <p>No stories have been published yet.</p>
+                `;
+
+                return;
+
+            }
 
         }
+
+        const docSnap = snapshot.docs[0];
+        const story = docSnap.data();
+
+        const preview =
+            (story.message || "").substring(0, 300);
+
+        featuredDiv.innerHTML = `
+
+            <span class="featured-badge">
+                ⭐ Featured Story
+            </span>
+
+            <h2>${story.title || "Story of Hope"}</h2>
+
+            <p class="featured-meta">
+                By ${story.author || "Anonymous"} • ${story.category || "Recovery"}
+            </p>
+
+            <p>${preview}...</p>
+
+            <a href="story.html?id=${docSnap.id}" class="primary-btn">
+                Read Full Story
+            </a>
+
+        `;
+
+    } catch (err) {
+
+        console.error(err);
+
+        featuredDiv.innerHTML =
+            "<p>Unable to load featured story.</p>";
+
+    }
+
+}
 
         const docSnap = snapshot.docs[0];
 
