@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Recovery Toolkit | AnchorLight</title>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/toolkit.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+<img src="images/logo.png" alt="AnchorLight">
+<h1>AnchorLight</h1>
+</div>
+
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="stories.html">Stories</a></li>
+<li><a href="daily-beacon.html">Daily Beacon</a></li>
+<li><a href="resources.html">Resources</a></li>
+<li><a href="toolkit.html" class="active">Toolkit</a></li>
+</ul>
+</nav>
+
+</header>
+
+<section class="page-hero">
+
+<div class="container">
+
+<h1>Recovery Toolkit</h1>
+
+<p>
+Practical tools to support your recovery journey every day.
+</p>
+
+</div>
+
+</section>
+
+<section class="container">
+
+<div class="story-card">
+
+<h2>📅 Sobriety Tracker</h2>
+
+<p>Select the day your recovery journey began.</p>
+
+<input type="date" id="sobrietyDate">
+
+<br><br>
+
+<button id="calculateBtn" class="primary-btn">
+
+Calculate My Progress
+
+</button>
+
+<h2 id="daysSober" style="margin-top:30px;"></h2>
+
+</div>
+
+<div class="story-card">
+
+<h2>🙏 Daily Gratitude</h2>
+
+<textarea
+id="gratitude"
+rows="6"
+placeholder="What are three things you're grateful for today?"></textarea>
+
+<br><br>
+
+<button id="saveGratitude" class="primary-btn">
+
+Save Entry
+
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="copyright">
+
+© 2026 AnchorLight • Find Your Way Back
+
+</div>
+
+</footer>
+
+<script src="js/toolkit.js"></script>
+
+</body>
+
+</html>
