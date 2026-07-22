@@ -124,5 +124,73 @@ searchBox.addEventListener("input", () => {
     renderStories(filtered);
 
 });
+async function loadFeaturedStory() {
+
+    const featuredDiv =
+        document.getElementById("featuredStory");
+
+    try {
+
+        const q = query(
+            collection(db, "stories"),
+            where("approved", "==", true),
+            where("featured", "==", true)
+        );
+
+        const snapshot = await getDocs(q);
+
+        if (snapshot.empty) {
+
+            featuredDiv.innerHTML = `
+                <p>No featured story selected.</p>
+            `;
+
+            return;
+
+        }
+
+        const docSnap = snapshot.docs[0];
+
+        const story = docSnap.data();
+
+        featuredDiv.innerHTML = `
+
+            <span class="featured-badge">
+                ⭐ Featured Story
+            </span>
+
+            <h2>${story.title}</h2>
+
+            <p class="featured-meta">
+
+                By ${story.author || "Anonymous"}
+
+            </p>
+
+            <p>
+
+                ${story.message.substring(0,300)}...
+
+            </p>
+
+            <a
+                href="story.html?id=${docSnap.id}"
+                class="primary-btn">
+
+                Read Full Story
+
+            </a>
+
+        `;
+
+    }
+
+    catch(err){
+
+        console.error(err);
+
+    }
+
+}
 
 loadStories();
