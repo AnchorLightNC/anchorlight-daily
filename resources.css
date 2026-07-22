@@ -1,0 +1,124 @@
+/* ==========================================
+   Resources Page
+========================================== */
+
+.page-hero{
+
+    padding:120px 20px 70px;
+
+    text-align:center;
+
+    background:linear-gradient(
+        rgba(15,23,42,.88),
+        rgba(17,24,39,.96)
+    );
+
+}
+
+.page-hero h1{
+
+    color:var(--primary);
+
+    font-size:3rem;
+
+    margin-bottom:20px;
+
+}
+
+.page-hero p{
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+/* Resource Grid */
+
+.resource-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:30px;
+
+    margin:70px auto;
+
+}
+
+/* Cards */
+
+.resource-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    transition:.3s;
+
+    box-shadow:var(--shadow);
+
+}
+
+.resource-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:var(--primary);
+
+}
+
+.resource-card h2{
+
+    color:var(--primary);
+
+    margin-bottom:18px;
+
+}
+
+.resource-card p{
+
+    line-height:1.8;
+
+}
+
+/* Reminder Card */
+
+.story-card{
+
+    margin-bottom:70px;
+
+    text-align:center;
+
+}
+
+.story-card h2{
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.page-hero h1{
+
+    font-size:2.2rem;
+
+}
+
+.resource-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+}
