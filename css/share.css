@@ -1,60 +1,170 @@
-body{
-background:#111827;
-font-family:Arial,sans-serif;
-color:white;
-margin:0;
-padding:30px;
+/* ==========================================
+   Share Story Page
+========================================== */
+
+.page-hero{
+
+    padding:120px 20px 70px;
+
+    text-align:center;
+
+    background:linear-gradient(
+        rgba(15,23,42,.88),
+        rgba(17,24,39,.96)
+    );
+
 }
 
-.container{
-max-width:700px;
-margin:auto;
-background:#1f2937;
-padding:30px;
-border-radius:20px;
-border:2px solid #22d3ee;
+.page-hero h1{
+
+    color:var(--primary);
+
+    font-size:3rem;
+
+    margin-bottom:15px;
+
 }
 
-h1{
-color:#22d3ee;
-text-align:center;
+.page-hero p{
+
+    max-width:650px;
+
+    margin:auto;
+
 }
 
-label{
-display:block;
-margin-top:20px;
-margin-bottom:8px;
+/* Form */
+
+.story-form{
+
+    max-width:800px;
+
+    margin:60px auto;
+
+    background:var(--surface);
+
+    padding:40px;
+
+    border-radius:20px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
 }
 
-input,
-textarea{
-width:100%;
-padding:12px;
-border-radius:10px;
-border:none;
-font-size:16px;
-box-sizing:border-box;
+.story-form label{
+
+    display:block;
+
+    margin-top:20px;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
 }
 
-button{
-margin-top:25px;
-width:100%;
-padding:16px;
-background:#22d3ee;
-color:#111827;
-font-size:18px;
-font-weight:bold;
-border:none;
-border-radius:10px;
-cursor:pointer;
+.story-form input[type=text],
+
+.story-form textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+    background:#1f2937;
+
+    color:white;
+
+    font-size:1rem;
+
+    resize:vertical;
+
 }
 
-button:hover{
-background:#67e8f9;
+.story-form textarea{
+
+    min-height:220px;
+
 }
 
-#status{
-margin-top:20px;
-text-align:center;
-font-weight:bold;
+.story-form input:focus,
+
+.story-form textarea:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 10px rgba(45,212,191,.25);
+
+}
+
+.checkbox{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+    margin:25px 0;
+
+}
+
+/* Messages */
+
+.success-message{
+
+    background:#0f5132;
+
+    color:white;
+
+    padding:25px;
+
+    border-radius:16px;
+
+    margin-top:30px;
+
+    text-align:center;
+
+}
+
+.error-message{
+
+    background:#7f1d1d;
+
+    color:white;
+
+    padding:20px;
+
+    border-radius:16px;
+
+    margin-top:30px;
+
+    text-align:center;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.story-form{
+
+    padding:25px;
+
+}
+
+.page-hero h1{
+
+    font-size:2.2rem;
+
+}
+
 }
