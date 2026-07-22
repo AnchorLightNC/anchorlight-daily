@@ -95,10 +95,11 @@ async function loadDashboard() {
 
   catch (err) {
 
-    console.error(err);
+  console.error(err);
 
-    visitorElement.textContent = "Error";
-    storyElement.textContent = "Error";
+  visitorElement.textContent = err.code || err.message;
+  storyElement.textContent = err.code || err.message;
+
 
   }
 
