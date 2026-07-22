@@ -139,10 +139,141 @@ function updateStats(){
 // (Part 2 will replace this)
 // ==========================================
 
+// ==========================================
+// Render Story Cards
+// ==========================================
+
 function renderStories(){
 
-    storyList.innerHTML =
-        "<h2 style='text-align:center'>Loading stories...</h2>";
+    storyList.innerHTML = "";
+
+    let filtered = [...stories];
+
+    // Filter
+    if(currentFilter === "pending"){
+        filtered = filtered.filter(s => !s.approved);
+    }
+
+    if(currentFilter === "approved"){
+        filtered = filtered.filter(s => s.approved);
+    }
+
+    // Search
+    const search = searchBox.value.toLowerCase().trim();
+
+    if(search){
+
+        filtered = filtered.filter(story => {
+
+            return (
+                (story.title || "").toLowerCase().includes(search) ||
+                (story.author || "").toLowerCase().includes(search) ||
+                (story.message || "").toLowerCase().includes(search)
+            );
+
+        });
+
+    }
+
+    if(filtered.length === 0){
+
+        storyList.innerHTML = `
+            <div class="story">
+                <h2>No stories found</h2>
+                <p>Try another search or filter.</p>
+            </div>
+        `;
+
+        return;
+
+    }
+
+    filtered.forEach(story => {
+
+        const card = document.createElement("div");
+
+        card.className = "story";
+
+        let created = "Unknown";
+
+        if(story.createdAt?.toDate){
+
+            created =
+                story.createdAt
+                .toDate()
+                .toLocaleDateString();
+
+        }
+
+        card.innerHTML = `
+
+            <h2>${story.title || "Untitled Story"}</h2>
+
+            <div class="story-meta">
+
+                👤 ${story.author || "Anonymous"}
+
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+
+                📅 ${created}
+
+            </div>
+
+            <div class="status ${story.approved ? "approved" : "pending"}">
+
+                ${story.approved
+                    ? "✅ Published"
+                    : "⏳ Pending Review"}
+
+            </div>
+
+            <p>
+
+                ${story.message || ""}
+
+            </p>
+
+            <div class="actions">
+
+                <button
+                    class="publishBtn"
+                    onclick="publishStory('${story.id}')">
+
+                    Publish
+
+                </button>
+
+                <button
+                    class="unpublishBtn"
+                    onclick="unpublishStory('${story.id}')">
+
+                    Unpublish
+
+                </button>
+
+                <button
+                    class="editBtn"
+                    onclick="editStory('${story.id}')">
+
+                    Edit
+
+                </button>
+
+                <button
+                    class="deleteBtn"
+                    onclick="deleteStory('${story.id}')">
+
+                    Delete
+
+                </button>
+
+            </div>
+
+        `;
+
+        storyList.appendChild(card);
+
+    });
 
 }
 
