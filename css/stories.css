@@ -134,3 +134,70 @@
 }
 
 }
+/* Featured Story */
+
+.featured-story-section{
+
+    max-width:1100px;
+
+    margin:50px auto;
+
+    padding:0 20px;
+
+}
+
+.featured-story-card{
+
+    background:linear-gradient(135deg,#134e4a,#0f172a);
+
+    border:1px solid var(--primary);
+
+    border-radius:24px;
+
+    padding:40px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.featured-badge{
+
+    display:inline-block;
+
+    background:var(--primary);
+
+    color:#111827;
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    font-weight:bold;
+
+    margin-bottom:20px;
+
+}
+
+.featured-story-card h2{
+
+    font-size:2rem;
+
+    margin-bottom:15px;
+
+}
+
+.featured-story-card p{
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+
+}
+
+.featured-meta{
+
+    color:#cbd5e1;
+
+    margin-bottom:20px;
+
+}
