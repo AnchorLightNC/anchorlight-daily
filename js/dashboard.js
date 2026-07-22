@@ -1,129 +1,39 @@
-// Firebase imports
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-
 import {
-  getFirestore,
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-  increment,
-  collection,
-  getDocs
+collection,
+getCountFromServer,
+query,
+where
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBkkNqTAIuTnEUA-Bn4pgGHS_ZtmmQgJws",
-  authDomain: "anchorlight-cf27d.firebaseapp.com",
-  projectId: "anchorlight-cf27d",
-  storageBucket: "anchorlight-cf27d.firebasestorage.app",
-  messagingSenderId: "654797884067",
-  appId: "1:654797884067:web:0407e2cdba44a1cdc70d16",
-  measurementId: "G-T1YLJ6MDB9"
-};
+import { db } from "./firebase.js";
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+async function loadDashboard(){
 
-// References
-const visitorRef = doc(db, "stats", "visitors");
-const storiesCollection = collection(db, "stories");
+const storiesRef = collection(db,"stories");
 
-// Dashboard elements
-const visitorElement = document.getElementById("visitorCount");
-const storyElement = document.getElementById("storyCount");
+const totalStories =
+await getCountFromServer(storiesRef);
 
-// Load dashboard
-async function loadDashboard() {
+document.getElementById("storyCount").textContent =
+totalStories.data().count;
 
-  try {
+const approved =
+query(
+storiesRef,
+where("approved","==",true)
+);
 
-    // ----------------------------
-    // VISITOR COUNTER
-    // ----------------------------
+const approvedCount =
+await getCountFromServer(approved);
 
-    let visitorDoc = await getDoc(visitorRef);
+document.getElementById("publishedCount").textContent =
+approvedCount.data().count;
 
-    if (!visitorDoc.exists()) {
-      await setDoc(visitorRef, {
-        count: 0
-      });
+// Placeholder until analytics is added
+document.getElementById("visitorCount").textContent = "0";
 
-      visitorDoc = await getDoc(visitorRef);
-    }
-
-    const counted = localStorage.getItem("anchorlightVisitor");
-
-    if (!counted) {
-
-      await updateDoc(visitorRef, {
-        count: increment(1)
-      });
-
-      localStorage.setItem("anchorlightVisitor", "true");
-    }
-
-    visitorDoc = await getDoc(visitorRef);
-
-    const visitorCount = visitorDoc.data().count || 0;
-
-    animateCounter(visitorCount);
-
-    // ----------------------------
-    // STORIES SHARED
-    // ----------------------------
-
-    const stories = await getDocs(storiesCollection);
-
-    let totalStories = 0;
-
-    stories.forEach((story) => {
-
-      const data = story.data();
-
-      if (data.approved === true) {
-        totalStories++;
-      }
-
-    });
-
-    storyElement.textContent = totalStories.toLocaleString();
-
-  }
-
-  catch (err) {
-
-  console.error(err);
-
-  visitorElement.textContent = err.code || err.message;
-  storyElement.textContent = err.code || err.message;
-
-
-  }
-
-}
-
-// Number animation
-function animateCounter(target) {
-
-  let current = 0;
-
-  const step = Math.max(1, Math.ceil(target / 60));
-
-  const timer = setInterval(() => {
-
-    current += step;
-
-    if (current >= target) {
-      current = target;
-      clearInterval(timer);
-    }
-
-    visitorElement.textContent = current.toLocaleString();
-
-  }, 20);
+// Replace this later with your JSON count
+document.getElementById("beaconCount").textContent = "365";
 
 }
 
