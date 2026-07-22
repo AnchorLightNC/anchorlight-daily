@@ -195,3 +195,30 @@ async function loadFeaturedStory() {
 }
 loadFeaturedStory();
 loadStories();
+const categoryButtons = document.querySelectorAll(".category-btn");
+
+categoryButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        categoryButtons.forEach(btn =>
+            btn.classList.remove("active"));
+
+        button.classList.add("active");
+
+        const category = button.dataset.category;
+
+        if (category === "All") {
+            renderStories(stories);
+            return;
+        }
+
+        const filtered = stories.filter(story =>
+            (story.category || "Recovery") === category
+        );
+
+        renderStories(filtered);
+
+    });
+
+});
