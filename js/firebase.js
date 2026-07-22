@@ -19,18 +19,14 @@ import {
 ========================================== */
 
 const firebaseConfig = {
+  apiKey: "AIzaSyBkkNqTAIuTnEUA-Bn4pgGHS_ZtmmQgJws",
+  authDomain: "anchorlight-cf27d.firebaseapp.com",
+  projectId: "anchorlight-cf27d",
+  storageBucket: "anchorlight-cf27d.firebasestorage.app",
+  messagingSenderId: "654797884067",
+  appId: "1:654797884067:web:0407e2cdba44a1cdc70d16",
+  measurementId: "G-T1YLJ6MDB9"
 
-    apiKey: "YOUR_API_KEY",
-
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-
-    projectId: "YOUR_PROJECT",
-
-    storageBucket: "YOUR_PROJECT.firebasestorage.app",
-
-    messagingSenderId: "YOUR_SENDER_ID",
-
-    appId: "YOUR_APP_ID"
 
 };
 
