@@ -7,7 +7,9 @@ import {
   getDoc,
   setDoc,
   updateDoc,
-  increment
+  increment,
+  collection,
+  getDocs
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 // Firebase configuration
@@ -25,59 +27,84 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Firestore document
-const counterRef = doc(db, "stats", "visitors");
+// References
+const visitorRef = doc(db, "stats", "visitors");
+const storiesCollection = collection(db, "stories");
 
+// Dashboard elements
 const visitorElement = document.getElementById("visitorCount");
+const storyElement = document.getElementById("storyCount");
 
-// Main function
-async function loadCounter() {
+// Load dashboard
+async function loadDashboard() {
 
   try {
 
-    // Create the document if it doesn't exist
-    let snapshot = await getDoc(counterRef);
+    // ----------------------------
+    // VISITOR COUNTER
+    // ----------------------------
 
-    if (!snapshot.exists()) {
+    let visitorDoc = await getDoc(visitorRef);
 
-      await setDoc(counterRef, {
+    if (!visitorDoc.exists()) {
+      await setDoc(visitorRef, {
         count: 0
       });
 
-      snapshot = await getDoc(counterRef);
+      visitorDoc = await getDoc(visitorRef);
     }
 
-    // Only count this browser once
     const counted = localStorage.getItem("anchorlightVisitor");
 
     if (!counted) {
 
-      await updateDoc(counterRef, {
+      await updateDoc(visitorRef, {
         count: increment(1)
       });
 
       localStorage.setItem("anchorlightVisitor", "true");
     }
 
-    // Read latest value
-    const latest = await getDoc(counterRef);
+    visitorDoc = await getDoc(visitorRef);
 
-    const total = latest.data().count || 0;
+    const visitorCount = visitorDoc.data().count || 0;
 
-    animateCounter(total);
+    animateCounter(visitorCount);
 
-  } catch (err) {
+    // ----------------------------
+    // STORIES SHARED
+    // ----------------------------
 
-    console.error("Firebase Error:", err);
+    const stories = await getDocs(storiesCollection);
 
-    visitorElement.innerHTML =
-      `<small>${err.code}</small>`;
+    let totalStories = 0;
+
+    stories.forEach((story) => {
+
+      const data = story.data();
+
+      if (data.approved === true) {
+        totalStories++;
+      }
+
+    });
+
+    storyElement.textContent = totalStories.toLocaleString();
+
+  }
+
+  catch (err) {
+
+    console.error(err);
+
+    visitorElement.textContent = "Error";
+    storyElement.textContent = "Error";
 
   }
 
 }
 
-// Animation
+// Number animation
 function animateCounter(target) {
 
   let current = 0;
@@ -89,11 +116,8 @@ function animateCounter(target) {
     current += step;
 
     if (current >= target) {
-
       current = target;
-
       clearInterval(timer);
-
     }
 
     visitorElement.textContent = current.toLocaleString();
@@ -102,4 +126,4 @@ function animateCounter(target) {
 
 }
 
-loadCounter();
+loadDashboard();
