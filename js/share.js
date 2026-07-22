@@ -1,6 +1,4 @@
-// Firebase imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-
 import {
   getFirestore,
   collection,
@@ -8,7 +6,6 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBkkNqTAIuTnEUA-Bn4pgGHS_ZtmmQgJws",
   authDomain: "anchorlight-cf27d.firebaseapp.com",
@@ -19,54 +16,73 @@ const firebaseConfig = {
   measurementId: "G-T1YLJ6MDB9"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Firestore collection
-const storiesRef = collection(db, "stories");
-
-// Form elements
 const form = document.getElementById("storyForm");
 const status = document.getElementById("status");
 
 form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const author =
-    document.getElementById("author").value.trim() || "Anonymous";
+    status.innerHTML = "Submitting your story...";
 
-  const title =
-    document.getElementById("title").value.trim();
+    const author =
+        document.getElementById("author").value.trim() || "Anonymous";
 
-  const message =
-    document.getElementById("message").value.trim();
+    const title =
+        document.getElementById("title").value.trim();
 
-  try {
+    const message =
+        document.getElementById("message").value.trim();
 
-    await addDoc(storiesRef, {
-      author,
-      title,
-      message,
-      approved: false,
-      createdAt: serverTimestamp()
-    });
+    const consent =
+        document.getElementById("consent").checked;
 
-    status.textContent =
-      "✅ Thank you! Your story has been submitted for review.";
+    if (!consent) {
+        status.innerHTML =
+            "<p>Please agree to the consent statement.</p>";
+        return;
+    }
 
-    status.style.color = "#22d3ee";
+    try {
 
-    form.reset();
+        await addDoc(collection(db, "stories"), {
 
-  } catch (err) {
+            author,
+            title,
+            message,
 
-    console.error(err);
+            approved: false,
 
-    status.textContent =
-      "❌ Something went wrong. Please try again.";
+            createdAt: serverTimestamp(),
 
-    status.style.color = "#ff6b6b";
+            likes: 0,
 
-  }
+            featured: false
+
+        });
+
+        form.reset();
+
+        status.innerHTML = `
+            <div class="success-message">
+                <h2>❤️ Thank You!</h2>
+                <p>Your story has been received.</p>
+                <p>It will be reviewed before being published.</p>
+            </div>
+        `;
+
+    } catch (error) {
+
+        console.error(error);
+
+        status.innerHTML = `
+            <div class="error-message">
+                Sorry, something went wrong.
+                Please try again.
+            </div>
+        `;
+
+    }
 });
