@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Share Your Story | AnchorLight</title>
+
+<link rel="stylesheet" href="css/share.css">
+
+<script type="module" src="js/share.js" defer></script>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⚓ Share Your Story</h1>
+
+<p>
+Your story could be the light someone else needs today.
+Share as much or as little as you'd like.
+</p>
+
+<form id="storyForm">
+
+<label>Your Name (Optional)</label>
+
+<input
+id="author"
+type="text"
+placeholder="Anonymous">
+
+<label>Story Title</label>
+
+<input
+id="title"
+type="text"
+required>
+
+<label>Your Story</label>
+
+<textarea
+id="message"
+rows="10"
+required></textarea>
+
+<button type="submit">
+Submit Story
+</button>
+
+</form>
+
+<p id="status"></p>
+
+</div>
+
+</body>
+</html>
