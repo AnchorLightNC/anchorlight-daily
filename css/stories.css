@@ -240,7 +240,25 @@ background:var(--primary);
 color:#111827;
 
 }
+.story-category{
 
+    display:inline-block;
+
+    margin:10px 0 15px;
+
+    padding:6px 12px;
+
+    background:var(--primary);
+
+    color:#111827;
+
+    border-radius:999px;
+
+    font-size:.85rem;
+
+    font-weight:bold;
+
+}
 .category-btn.active{
 
 background:var(--primary);
@@ -250,3 +268,4 @@ color:#111827;
 font-weight:bold;
 
 }
+
