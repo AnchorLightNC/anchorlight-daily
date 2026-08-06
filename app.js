@@ -64,20 +64,9 @@ async function loadDevotional() {
         document.getElementById("challenge").textContent =
             currentEntry.challenge || "";
 
-        document.getElementById("verse").textContent =
-            currentEntry.verse || "";
-
-        document.getElementById("anchorThought").textContent =
-            currentEntry.anchorThought || "";
-
-        document.getElementById("anchorPrayer").textContent =
-            currentEntry.anchorPrayer || "";
-
         document.getElementById("captainsLog").textContent =
             currentEntry.captainsLog || "";
 
-        document.getElementById("tomorrowsHeading").textContent =
-            currentEntry.tomorrowsHeading || "";
 
     } catch (error) {
 
@@ -90,100 +79,3 @@ async function loadDevotional() {
             error.message;
 
     }
-
-}
-
-function copyQuote() {
-
-    if (!currentEntry) return;
-
-    navigator.clipboard.writeText(currentEntry.quote);
-
-    alert("Quote copied!");
-
-}
-
-function shareQuote() {
-
-    if (!currentEntry) return;
-
-    const text =
-`${currentEntry.title}
-
-"${currentEntry.quote}"
-
-Shared from AnchorLight Daily
-https://anchorlightnc.github.io/anchorlight-daily/`;
-
-    if (navigator.share) {
-
-        navigator.share({
-            title: currentEntry.title,
-            text: text,
-            url: "https://anchorlightnc.github.io/anchorlight-daily/"
-        });
-
-    } else {
-
-        navigator.clipboard.writeText(text);
-
-        alert("Devotional copied! You can now paste it anywhere.");
-
-    }
-
-}
-function getShareText() {
-
-    return `${currentEntry.title}
-
-"${currentEntry.quote}"
-
-${currentEntry.reflection}
-
-📖 ${currentEntry.verse}
-
-⚓ AnchorLight Daily
-https://anchorlightnc.github.io/anchorlight-daily/`;
-
-}
-
-function shareFacebook() {
-
-    const url = encodeURIComponent(
-        "https://anchorlightnc.github.io/anchorlight-daily/"
-    );
-
-    window.open(
-        `https://www.facebook.com/sharer/sharer.php?u=${url}`,
-        "_blank"
-    );
-
-}
-
-function shareX() {
-
-    const text = encodeURIComponent(
-        `${currentEntry.title}
-
-"${currentEntry.quote}"
-
-https://anchorlightnc.github.io/anchorlight-daily/`
-    );
-
-    window.open(
-        `https://twitter.com/intent/tweet?text=${text}`,
-        "_blank"
-    );
-
-}
-
-function shareEmail() {
-
-    const subject = encodeURIComponent(currentEntry.title);
-
-    const body = encodeURIComponent(getShareText());
-
-    window.location =
-        `mailto:?subject=${subject}&body=${body}`;
-
-}
